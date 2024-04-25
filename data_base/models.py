@@ -21,6 +21,8 @@ class User(Base):
     age: Mapped[int] = mapped_column(BigInteger)
     gender: Mapped[str] = mapped_column(String(15))
     search_gender: Mapped[str] = mapped_column(String(12))
+    faculty: Mapped[str] = mapped_column(String())
+    photo: Mapped[str] = mapped_column(String())
     description: Mapped[str] = mapped_column(String(300))
 
 

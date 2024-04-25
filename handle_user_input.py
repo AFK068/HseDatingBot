@@ -19,3 +19,7 @@ async def check_user_gender_search_for_correctness(input_string):
 
 async def check_slit_registration_for_correctness(input_string):
     return input_string in ['Посмотреть мою анкету', 'Заполнить анкету заново', 'Вернуться назад']
+
+
+async def check_faculty_existance(input_string):
+    return True

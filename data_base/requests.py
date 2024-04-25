@@ -4,7 +4,8 @@ from sqlalchemy import select, update, delete
 import random
 
 
-async def set_user(tg_id, user_chat_id, user_name, user_age, user_gender, user_search_gender, user_description):
+async def set_user(tg_id, user_chat_id, user_name, user_age, user_gender, user_search_gender, user_faculty, user_photo,
+                   user_description):
     async with async_session() as session:
         user = await session.scalar(select(User).where(User.telegram_id == tg_id))
 
@@ -13,10 +14,14 @@ async def set_user(tg_id, user_chat_id, user_name, user_age, user_gender, user_s
             user.age = user_age
             user.gender = user_gender
             user.search_gender = user_search_gender
+            user.faculty = user_faculty
+            user.photo = user_photo
             user.description = user_description
         else:
             new_user = User(telegram_id=tg_id, chat_id=user_chat_id, name=user_name, age=user_age, gender=user_gender,
-                            search_gender=user_search_gender, description=user_description)
+                            search_gender=user_search_gender, faculty=user_faculty, photo=user_photo,
+                            description=user_description)
+
             session.add(new_user)
 
         await session.commit()
@@ -49,7 +54,7 @@ async def get_random_user_telegram_id():
 async def get_random_user_with_search_gender(gender):
     async with async_session() as session:
         result = await session.execute(
-            select(User).filter(User.search_gender == gender)
+            select(User).filter(User.gender == gender)
         )
         users = [row[0] for row in result]
         if users:

@@ -3,6 +3,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 import keyboards
 import data_base.requests
+import logic_search_users
 from aiogram.types.reply_keyboard_remove import ReplyKeyboardRemove
 from aiogram.filters.state import StateFilter
 from states import Form
@@ -45,5 +46,5 @@ async def search_user(message: Message, state: FSMContext):
     await state.update_data(search_user=message.text)
     data = await state.get_data()
 
-    user = await Search_user.search_and_output_random_user(message, state)
-    await message.answer(f'{user.chat_id}')
+    user = await logic_search_users.search_and_output_random_user(message, state)
+    await message.bot.send_message(chat_id=user.chat_id, text="Вам кто-то понравился")
