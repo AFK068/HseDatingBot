@@ -15,6 +15,6 @@ user_telegram_id_repeated_registration_keyboard = ReplyKeyboardMarkup(keyboard=[
                                                                                 [KeyboardButton(text="Заполнить анкету заново")],
                                                                                 [KeyboardButton(text="Вернуться назад")]], resize_keyboard=True)
 
-user_main_search_keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text="🤍"), KeyboardButton(text="👎"), KeyboardButton(text="🔙")]], resize_keyboard=True)
+user_main_search_keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text="🤍"), KeyboardButton(text="👎"), KeyboardButton(text="💤")]], resize_keyboard=True)
 
 start_search_user_keyboard = ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text="Начать поиск"), KeyboardButton(text="Заполнить анкету заново")]], resize_keyboard=True)
